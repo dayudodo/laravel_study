@@ -1,0 +1,26 @@
+web:
+    image: hitalos/laravel:latest
+    ports:
+        - 8000:80
+    volumes:
+        - ./:/var/www
+    links:
+        - db
+    environment:
+        DB_HOST: db
+        DB_DATABASE: blog
+        DB_USERNAME: docker
+        DB_PASSWORD: docker
+        DB_CONNECTION: pqsql
+db:
+    image: postgres
+    environment:
+        # # with mysql
+        # MYSQL_DATABASE: dbname
+        # MYSQL_USER: username
+        # MYSQL_PASSWORD: p455w0rd
+
+        # with postgres
+        POSTGRES_DB: blog
+        POSTGRES_USER: docker
+        POSTGRES_PASSWORD: docker
